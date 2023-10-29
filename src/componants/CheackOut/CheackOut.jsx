@@ -44,7 +44,7 @@ const CheackOut = () => {
             method: "POST",
 
             headers: {
-                "content-type": 'applycation/json'
+                "content-type": 'application/json'
 
             },
             body: JSON.stringify(bookings)
