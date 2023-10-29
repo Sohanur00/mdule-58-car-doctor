@@ -55,7 +55,14 @@ const CheackOut = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+
+                if(date.insertedId){
+
+
+                    alert('successfully added your order')
+                }
             })
+         
 
     }
 

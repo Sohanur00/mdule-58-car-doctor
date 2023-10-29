@@ -1,14 +1,40 @@
 import { Link } from "react-router-dom";
 import logo from '../../../assets/logo.svg'
+import { useContext } from "react";
+import { Authcontext } from "../../Provider/AuthProvider";
 
 const Navber = () => {
+
+
+
+
+    const { user,logOut } = useContext(Authcontext)
+
+
+const handleLogOut = () =>{
+logOut()
+.then(()=>{
+   
+})
+.catch(error =>{
+
+    console.log(error)
+})
+    
+}
+
 
     const navItem = <>
 
         <li className="font-bold"> <Link to='/'>Home</Link></li>
         <li className="font-bold"> <Link to='/about'>About</Link></li>
-        <li className="font-bold"> <Link to='/login'>Login</Link></li>
-      
+        {
+            user?.email ? <li onClick={handleLogOut} className="font-bold btn"> <Link to='/logOut'>LogOut</Link></li> : <li className="font-bold"> <Link to='/login'>Login</Link></li>
+        }
+
+
+
+
 
 
     </>
@@ -24,7 +50,7 @@ const Navber = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 
-                        { navItem}
+                        {navItem}
 
 
                     </ul>
@@ -33,9 +59,9 @@ const Navber = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                  
-                  {navItem}
-                 
+
+                    {navItem}
+
                 </ul>
             </div>
             <div className="navbar-end">
